@@ -1,6 +1,6 @@
-# fps_monitor
+# robosys2025_fps_monitor
 
-[![test](https://github.com/yama0511/robosys2025-fps_monitor/actions/workflows/test.yml/badge.svg)](https://github.com/yama0511/robosys2025-fps_monitor/actions/workflows/test.yml)
+[![test](https://github.com/yama0511/robosys2025_fps_monitor/actions/workflows/test.yml/badge.svg)](https://github.com/yama0511/robosys2025_fps_monitor/actions/workflows/test.yml)
 
 センサーデータの受信間隔からフレームレート（FPS）を計算・監視するROS 2パッケージです。
 変動するセンサーデータの受信頻度をリアルタイムで計測し、現在値と平均値をログ表示およびトピック配信します。
@@ -30,7 +30,7 @@
 ROS 2 ワークスペースの `src` ディレクトリに本リポジトリをクローンし、ワークスペースのルートディレクトリでビルドしてください。
 ```bash
 # リポジトリのクローン
-git clone [https://github.com/yama0511/robosys2025-fps_monitor.git](https://github.com/yama0511/robosys2025-fps_monitor.git)
+git clone [https://github.com/yama0511/robosys2025_fps_monitor.git](https://github.com/yama0511/robosys2025_fps_monitor.git)
 
 # 依存関係のインストールとビルド
 rosdep install -i --from-path src --rosdistro humble -y
