@@ -9,7 +9,7 @@ cd $dir/ros2_ws
 colcon build
 source install/setup.bash
 
-ros2 launch fps_monitor fps_launch.py > /dev/null &
+ros2 launch robosys2025_fps_monitor fps_launch.py > /dev/null &
 PID=$!
 sleep 5
 
