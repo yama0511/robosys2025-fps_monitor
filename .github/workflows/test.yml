@@ -33,4 +33,5 @@ jobs:
 
       - name: Run custom test script
         run: |
+          . /opt/ros/humble/setup.sh
           bash ~/ros2_ws/src/robosys2025_fps_monitor/test/test.bash
