@@ -12,13 +12,25 @@
 * Python 3.10
 
 ## インストール
+ROS 2 ワークスペースの `src` ディレクトリに本リポジトリをクローンし、ワークスペースのルートディレクトリでビルドしてください。
 ```bash
-cd ~/ros2_ws/src
+# リポジトリのクローン
 git clone [https://github.com/yama0511/robosys2025-fps_monitor.git](https://github.com/yama0511/robosys2025-fps_monitor.git)
-cd ~/ros2_ws
+
+# 依存関係のインストールとビルド
 rosdep install -i --from-path src --rosdistro humble -y
 colcon build --packages-select fps_monitor
+
+# セットアップファイルの読み込み
 source install/setup.bash
+```
+
+#### 3. 保存してプッシュ
+```bash
+cd ~/ros2_ws/src/fps_monitor
+git add README.md
+git commit -m "Update install instructions to generic style"
+git push
 ```
 
 ## 実行方法
