@@ -11,9 +11,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y python3-pip
+          rosdep update
+          rosdep install -i --from-path src --rosdistro humble -y
+
       - name: Build and test
         run: |
           . /opt/ros/humble/setup.sh
           colcon build --symlink-install
-          colcon test
-          colcon test-result --verbose
+          colcon test --event-handlers console_direct+
+
+      - name: Run custom test script
+        run: |
+          . /opt/ros/humble/setup.sh
+          . install/setup.sh
