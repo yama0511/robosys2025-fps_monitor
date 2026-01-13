@@ -26,28 +26,6 @@
 * **Publishers**
   * `/current_fps` (std_msgs/msg/Float32): 計算された現在のFPS値
 
-## インストール
-ROS 2 ワークスペースの `src` ディレクトリに本リポジトリをクローンし、ワークスペースのルートディレクトリでビルドしてください。
-```bash
-# リポジトリのクローン
-git clone [https://github.com/yama0511/robosys2025_fps_monitor.git](https://github.com/yama0511/robosys2025_fps_monitor.git)
-
-# 依存関係のインストールとビルド
-rosdep install -i --from-path src --rosdistro humble -y
-colcon build --packages-select robosys2025_fps_monitor
-
-# セットアップファイルの読み込み
-source install/setup.bash
-```
-
-#### 3. 保存してプッシュ
-```bash
-cd ~/ros2_ws/src/robosys2025_fps_monitor
-git add README.md
-git commit -m "Update install instructions to generic style"
-git push
-```
-
 ## 実行方法
 ### 1. Launchファイルによる実行
 Launchファイルを使用して、センサーシミュレータと計算ノードを同時に起動します。
