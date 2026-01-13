@@ -1,20 +1,24 @@
-#!/bin/bash
+#!/bin/bash -xv
 # SPDX-FileCopyrightText: 2025 Yamato Okada
 # SPDX-License-Identifier: BSD-3-Clause
 
-dir=~
-[ "$1" != "" ] && dir="$1"
+ng () {
+      echo ${1}行目が違うよ
+      res=1
+}
 
-cd $dir/ros2_ws
-colcon build
+res=0
+
+source /opt/ros/humble/setup.bash
+
+colcon build --packages-select robosys2025_fps_monitor || ng "$LINENO"
 source install/setup.bash
 
-ros2 launch robosys2025_fps_monitor fps_launch.py > /dev/null &
-PID=$!
-sleep 5
+timeout 10 ros2 launch robosys2025_fps_monitor fps_launch.py > /tmp/robosys2025_fps_monitor.log 2>&1 || true
 
-res=$(timeout 10 ros2 topic echo /current_fps --once)
-kill $PID
+count=$(grep -c "FPS" /tmp/robosys2025_fps_monitor.log)
+[ "$count" -ge 1 ] || ng "$LINENO"
 
-echo "$res" | grep "data" && exit 0
-exit 1
+[ "$res" = 0 ] && echo OK
+
+exit $res
